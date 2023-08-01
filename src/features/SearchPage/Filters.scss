@@ -1,0 +1,83 @@
+@import '../../scss/utilities.scss';
+
+.filters {
+
+    padding: 0 rem(30px);
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        gap: rem(20px);
+        flex-wrap: wrap;
+    }
+
+    &__dropdown {
+        border: none;
+        box-shadow: inset 0 1px 3px #ddd;
+        padding: rem(10px);
+        background-color: #eee;
+    
+        color: #000;
+        option {
+          color: #000;
+        }
+    }
+
+    &__search {
+        padding: rem(9px) rem(10px);
+
+        flex-basis: rem(300px);
+
+        outline: none;
+        border: none;
+        border-bottom: solid #ccc rem(2px);
+        color: #000;
+    
+        &:focus {
+          border: none;
+          border-bottom: solid $gold rem(2px);
+        }
+    }
+
+    &__submit {
+        position: relative;
+        height: rem(50px);
+        width: rem(50px);
+        background-color: $gold;
+        border: none;
+    
+        &:hover,
+        &:focus {
+          background-color: $dark-gold;
+        }
+    
+        &::after,
+        &::before {
+          display: block;
+          position: absolute;
+          content: "";
+          z-index: 1;
+        }
+    
+        &::before {
+          top: 47.5%;
+          left: 46.5%;
+          transform: translate(-50%, -50%);
+          width: 40.5%;
+          height: 40.5%;
+    
+          border: rem(2px) solid #fff;
+          border-radius: 50%;
+        }
+    
+        &::after {
+          top: 69%;
+          left: 58%;
+          height: rem(2px);
+          width: 20%;
+          transform: rotate(45deg);
+    
+          background-color: #fff;
+        }
+      }
+}

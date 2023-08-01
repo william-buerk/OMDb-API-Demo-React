@@ -1,0 +1,30 @@
+@import "../../scss/utilities.scss";
+@import "@fontsource/limelight";
+
+.header {
+    position: relative;
+
+    display: flex;
+    padding: rem(5px) rem(30px);
+
+    background-color: $red;
+
+    &__logo-link {
+        display: flex;
+        text-decoration: none;
+        gap: rem(20px);
+    }
+
+    &__logo-svg {
+        flex-shrink: 0;
+        width: rem(70px);
+    }
+
+    &__link-title {
+
+        font-family: "Limelight";
+        color: white;
+
+
+    }
+}

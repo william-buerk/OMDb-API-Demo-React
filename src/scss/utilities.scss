@@ -1,0 +1,28 @@
+@use "sass:math";
+
+@import 'variables.scss';
+
+%listreset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+%buttonreset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+/*
+Mixins
+*/
+
+@function stripUnit($value) {
+    @return math.div($value, ($value * 0 + 1));
+}
+  
+@function rem($pxValue) {
+    @return #{math.div(stripUnit($pxValue), stripUnit($html-font-size))}rem;
+}

@@ -1,0 +1,16 @@
+@import '../../scss/utilities.scss';
+
+.search-page {
+
+  text-align: center;
+  width: 100%;
+
+  &__header {
+    padding: rem(20px) 0;
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+
+}

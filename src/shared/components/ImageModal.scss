@@ -1,0 +1,82 @@
+@import "../../scss/utilities.scss";
+
+.image-modal {
+
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+    
+    background-color: rgba(20, 20, 20, 0.9);
+
+    &__close-button {
+        position: absolute;
+        top: rem(30px);
+        right: rem(30px);
+        height: rem(50px);
+        width: rem(50px);
+
+        border-radius: 50%;
+        border: rem(3px) #fff solid;
+        background: transparent;
+
+        cursor: pointer;
+
+
+        &::before, &::after {
+            display: block;
+            content: "";
+            position: absolute;
+            width: rem(35px);
+            height: rem(3px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+
+            background-color: #fff;
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    &__preview-container {
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        width: 30%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__preview {
+        width: 100%;
+    }
+
+    &__preview-hover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 33.33%;
+        width: 33.33%;
+
+        background-color: rgb(255, 215, 0, 0.8);
+
+        border: solid rem(3px) rgb(153, 101, 21, 0.8);
+    }
+
+    &__zoom-container {
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+
+        background-color: #000;
+
+        overflow: hidden;
+    }
+}

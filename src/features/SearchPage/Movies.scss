@@ -1,0 +1,30 @@
+@use "sass:math";
+@import '../../scss/utilities.scss';
+
+$card-gap: rem(10px);
+
+.movies {
+
+    padding: rem(10px) rem(10px) rem(20px);
+
+    &__list {
+        @extend %listreset;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: $card-gap;
+    }
+
+    &__list-item {
+
+        width: 100%;
+
+        @media (min-width: $bp-s) {
+            width: calc(math.div(100%, 2) - math.div(1, 2) * $card-gap);
+        }
+
+        @media (min-width: $bp-l) {
+            width: calc(math.div(100%, 3) - math.div(2, 3) * $card-gap);
+        }
+    }
+}

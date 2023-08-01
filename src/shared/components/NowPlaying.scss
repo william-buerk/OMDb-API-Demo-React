@@ -1,0 +1,88 @@
+@import "../../scss/utilities.scss";
+
+$arrow-color: #000;
+
+.now-playing {
+
+    position: relative;
+    margin: 0 rem(20px) rem(20px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #eee;
+
+    text-align: center;
+
+    &__header {
+        margin-top: 0;
+        width: 100%;
+        padding: rem(10px) rem(20px);
+
+        background-color: #333;
+
+        color: #fff;
+        text-align: left;
+        font-family: "Limelight";
+        font-weight: 400;
+    }
+
+    &__slider {
+        position: relative;
+        padding: 0 rem(10px) rem(10px);
+        width: calc(100% - 60px);
+
+        img {
+            object-position: center;
+        }
+    }
+
+    &__button {
+        @extend %buttonreset;
+        position: absolute;
+        width: rem(30px);
+        height: 100%;
+
+        top: 0;
+        
+        cursor: pointer;
+
+        &--prev {
+
+            left: rem(-20px);
+
+            &::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                display: block;
+                border-left: 5px solid $arrow-color;
+                border-top: 5px solid $arrow-color;
+                width: 25px;
+                height: 25px;
+                float: right;
+                transform: translate(30%, -50%) rotate(-45deg);
+            }
+        }
+
+        &--next {
+
+            right: rem(-20px);
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                display: block;
+                border-right: 5px solid $arrow-color;
+                border-bottom: 5px solid $arrow-color;
+                width: 25px;
+                height: 25px;
+                transform: translate(-30%, -50%) rotate(-45deg);
+            }
+        }
+    }
+}

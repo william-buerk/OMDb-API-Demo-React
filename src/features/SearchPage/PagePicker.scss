@@ -1,0 +1,19 @@
+@import '../../scss/utilities.scss';
+
+.page-picker {
+    margin: rem(10px) 0 rem(20px);
+
+    display: flex;
+    gap: rem(10px);
+    justify-content: center;
+
+    &__button {
+        
+        @extend %buttonreset;
+
+
+        &:hover:not(:disabled){
+            text-decoration: underline;
+        }
+    }
+}
