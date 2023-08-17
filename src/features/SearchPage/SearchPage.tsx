@@ -1,4 +1,5 @@
-import React, { FormEvent, useEffect, useState, StrictMode } from 'react';
+// import React, { FormEvent, useEffect, useState, StrictMode } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Movies from "./Movies.tsx";
 import Filters from "./Filters.tsx";
 import PagePicker from './PagePicker.tsx';
@@ -7,11 +8,12 @@ import Header from "../../shared/components/Header.tsx";
 import './SearchPage.scss';
 
 import { useSearchParams } from 'react-router-dom';
-import NowPlaying from '../../shared/components/NowPlaying.tsx';
+// import NowPlaying from '../../shared/components/NowPlaying.tsx';
 
-import type {MoviesData, Movie} from './types/index.tsx';
-import { func } from 'prop-types';
-import { clamp } from '../../utils/utils.tsx';
+// import type { MoviesData, Movie } from './types/index.tsx';
+import type { MoviesData } from './types/index.tsx';
+// import { func } from 'prop-types';
+// import { clamp } from '../../utils/utils.tsx';
 
 const API_KEY = "c92d6020"; // Fix
 
@@ -55,31 +57,31 @@ export default function SearchPage() {
 
   useEffect(() => {
 
-        const getMoviesData = async () => {
-            setMoviesData("Loading...");
+    const getMoviesData = async () => {
+      setMoviesData("Loading...");
 
-            const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&type=${searchType}&page=${page}&apikey=${API_KEY}`);
-            const moviesJson: MoviesData = await response.json();
-    
-            setMoviesData(moviesJson);
-        }
+      const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&type=${searchType}&page=${page}&apikey=${API_KEY}`);
+      const moviesJson: MoviesData = await response.json();
 
-        getMoviesData();
-    }, [searchTerm, searchType, page]);
+      setMoviesData(moviesJson);
+    }
+
+    getMoviesData();
+  }, [searchTerm, searchType, page]);
 
   const handleFiltersSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  
+
     const form = event.currentTarget;
-  
+
     const elements: any = form.elements; // TODO: See if there's another fix without using any 
-  
+
     const search = (elements.searchTerm as HTMLInputElement).value;
     const type = (elements.searchType as HTMLSelectElement).value;
-  
+
     console.log("search: ", search);
     console.log("type: ", type);
-  
+
     //Updates Query string
     setSearchParams({
       "searchTerm": search,
@@ -137,7 +139,7 @@ export default function SearchPage() {
   }
 
   function renderPagePicker() {
-    return (moviesData === "Loading..." && searchTerm !== "") || ( typeof moviesData !== "string" && moviesData.Response !== "False" );
+    return (moviesData === "Loading..." && searchTerm !== "") || (typeof moviesData !== "string" && moviesData.Response !== "False");
   }
 
   return (
@@ -149,15 +151,15 @@ export default function SearchPage() {
           <h1 className="search-page__title">Search Movies</h1>
 
           {/* Component breaks with strictmode due to third party library*/}
-          <Filters handleSubmit={handleFiltersSubmit} defaultSearchTerm={defaultSearchTerm} defaultSearchType={defaultSearchType}/>
+          <Filters handleSubmit={handleFiltersSubmit} defaultSearchTerm={defaultSearchTerm} defaultSearchType={defaultSearchType} />
 
         </div>
 
-        { renderPagePicker() ? <PagePicker moviesData={moviesData} currentPage={page} handleChange={handleNewPage} handlePrev={handlePrevPage} handleNext={handleNextPage}/> : "" }
+        {renderPagePicker() ? <PagePicker moviesData={moviesData} currentPage={page} handleChange={handleNewPage} handlePrev={handlePrevPage} handleNext={handleNextPage} /> : ""}
 
-        <Movies searchTerm={searchTerm} searchType={searchType} moviesData={moviesData}/>
+        <Movies searchTerm={searchTerm} searchType={searchType} moviesData={moviesData} />
 
-        { renderPagePicker() ? <PagePicker moviesData={moviesData} currentPage={page} handleChange={handleNewPage} handlePrev={handlePrevPage} handleNext={handleNextPage}/> : "" }
+        {renderPagePicker() ? <PagePicker moviesData={moviesData} currentPage={page} handleChange={handleNewPage} handlePrev={handlePrevPage} handleNext={handleNextPage} /> : ""}
 
         {/* <NowPlaying />  */}
       </div>
